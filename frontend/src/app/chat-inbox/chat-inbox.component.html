@@ -1,0 +1,76 @@
+
+<button (click)="onClickUserListButton()"  class="shadow-sm" id="user-list-button">Users</button>
+
+<div class="container">
+
+  <div class="header"></div>
+
+  <div class="main users">
+    <div id="user-heading">
+      Online
+    </div>
+    <div id="user-info">
+        <div *ngFor="let user of users">
+            <div>
+              {{user}}
+            </div>
+          </div>
+      </div>
+  </div>
+
+  <div #chats #scrollMe class="main chats">
+    <div id="chat-info">
+        <div id="chat-box">
+            <div id="chat_room">
+              <div *ngFor="let message of messages, let indexOf = index">
+
+                <div id="chat" *ngIf="message.username!=authService.getUsername()" class="m-3">
+                  <div id="chat-username">{{message.username}}</div>
+                  <div class="arrow-down"></div>
+                  <div id="chat-message" *ngIf='message.type==0'>
+                    {{message.message}}
+                  </div>
+                  <div  id="chat-message" *ngIf='message.type==1'>
+                      {{message.message}}
+                    <button class="btn fst-italic link-dark ml" (click)="onClickDownloadButton(message.message)"><u>Download</u></button>
+                  </div>
+                </div>
+
+                <div id="self-chat" *ngIf="message.username==authService.getUsername()" class="m-3">
+                  <div class="arrow-down"></div>
+                  <div id="chat-username">{{message.username}}</div>
+                  <div id="chat-message" *ngIf='message.type==0'>
+                    {{message.message}}
+                  </div>
+                  <div  id="chat-message" *ngIf='message.type==1'>
+                      {{message.message}}
+                    <button class="btn fst-italic link-dark ml" (click)="onClickDownloadButton(message.message)"><u>Download</u></button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div id="footer" class="page-hero d-flex align-items-center justify-content-center">
+      <div #sendMessageBox id="footer-row" class="row">
+        <div class="col-8">
+          <div class="div1 input-group input-group-lg">
+
+              <input (keyup.enter)="onClickSendButton()" [(ngModel)]="message" name="message" id="chat_message" type="text" class="form-control" placeholder="Message" aria-describedby="basic-addon2" />
+              <div class="input-group-append">
+                  <button (click)="onClickSendButton()" id="button" class="btn btn-outline-secondary">Send</button>
+              </div>
+
+          </div>
+        </div>
+        <div class="col-4">
+          <label id="upload-label" for="upload-input" class="btn">Upload File</label>
+          <input (change)="onFileSelected($event)" id="upload-input" style="visibility:hidden;" type="file">
+        </div>
+      </div>
+  </div>
+
+</div>

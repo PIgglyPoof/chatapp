@@ -1,0 +1,15 @@
+<div class="container d-flex justify-content-center">
+  <ul class="list-group mt-5 text-white">
+    <h2 class="text-black text-center">List of Chatrooms</h2>
+    <div *ngFor="let chatroom of chatrooms">
+      <li class="list-group-item d-flex justify-content-between align-content-center">
+          <div class="d-flex flex-row">
+              <div class="ml-2">
+                <a class='btn text-light' [routerLink]="['/chat-index', chatroom.name]">{{chatroom.name}}</a>
+              </div>
+          </div>
+      </li>
+    </div>
+  </ul>
+</div>
+

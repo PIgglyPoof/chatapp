@@ -1,0 +1,25 @@
+<section class="vh-80">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <h3 class="mb-5 text-center">Create a New Chatroom</h3>
+        <div class="card shadow-2-strong">
+          <div class="card-body text-center">
+
+            <form class="m-4" [formGroup]="chatroomForm" (ngSubmit)="onSubmit()">
+
+              <div class="form-outline mb-3">
+                <input formControlName="name" type="text" placeholder="Chatroom Name" id="typeEmailX-2" class="form-control form-control-lg" />
+              </div>
+
+              <input class="btn btn-lg btn-outline-primary w-100" type="submit" value="Create">
+
+            </form>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
